@@ -1,8 +1,17 @@
 from captcha.image import ImageCaptcha
+import random
+import string
 
-image= ImageCaptcha(width=280, height=90)
-captcha_text ="A9K7P"
+# Create captcha generator
+image = ImageCaptcha(width=280, height=90)
 
+# Generate random text
+captcha_text = ''.join(
+    random.choices(string.ascii_uppercase + string.digits, k=5)
+)
 
-image.write(captcha_text, 'captcha.png')
-print("Captcha generated :", captcha_text)
+# Save captcha image
+image.write(captcha_text, "captcha.png")
+
+print("CAPTCHA text:", captcha_text)
+print("CAPTCHA image saved as captcha.png")
